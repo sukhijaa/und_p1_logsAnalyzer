@@ -1,6 +1,6 @@
 # LogAnalzer
 
-Gives you the most updated set of data in  a clean report. Everytime.
+Gives you the most updated set of data in  a clean report. Everytime.\
 This module actually generates a clean report which gives you information about below :
 
     1. Most popular 3 articles till now
@@ -10,7 +10,7 @@ This module actually generates a clean report which gives you information about 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.\
 You need to have below technologies installed on your system
 
     1. Python 3 or higher
