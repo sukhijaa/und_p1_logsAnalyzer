@@ -48,7 +48,7 @@ def getDBConnectionCursor():
     try:
         return psycopg2.connect(database="news")
     except psycopg2.Error as e:
-        print("ERROR: Failed to connect to DB \"news\". Make sure this DB exists")
+        print("ERROR: Failed to connect to DB \"news\". Make sure DB exists")
         print(e.pgerror)
         print(e.diag.message_detail)
         sys.exit(1)
