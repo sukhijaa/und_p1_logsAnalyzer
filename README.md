@@ -1,7 +1,8 @@
 # LogAnalzer
 
-Gives you the most updated set of data in  a clean report. Everytime
+Gives you the most updated set of data in  a clean report. Everytime.
 This module actually generates a clean report which gives you information about below :
+
     1. Most popular 3 articles till now
     2. Views garnered by each author across all his articles
     3. Days where Failed responses percentage on network was more than 1%
@@ -23,9 +24,9 @@ You need to do below before you actually go and run the code.
     3. Run newsdata.sql file.
     4. Create all views mentioned in VIEWS Section
 
-    #### VIEWS
+#### VIEWS
     1. pathCountForSuccess
-       This view is nothing but a grouped aggregation of succesful responses for each URL path.
+       This view is nothing but a grouped aggregation of successful responses for each URL path.
 
        To create it, run below command
 
