@@ -1,22 +1,45 @@
-LogAnalzer : Gives you the most updated set of data. Everytime
+# LogAnalzer
 
-Running LogAnalzer module :
+Gives you the most updated set of data in  a clean report. Everytime
+This module actually generates a clean report which gives you information about below :
+    1. Most popular 3 articles till now
+    2. Views garnered by each author across all his articles
+    3. Days where Failed responses percentage on network was more than 1%
 
-    1. Run newsdata.sql file
-    2. Run LogAnalysis.py script
 
-About LogAnalysis Module:
+## Getting Started
 
-    On every run, this module CREATES OR REPLACE a view which is nothing but a grouped aggregation of succesful responses for each URL path.
-    This view was created since same query was used in 2 parts of this Log Analyzer.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+You need to have below technologies installed on your system
 
-    "CREATE OR REPLACE VIEW pathCountForSuccess as " \
-    "select path, count(*) as views " \
-    "from log " \
-    "where status like '20%' " \
-    "group by path order by views desc"
+    1. Python 3 or higher
+    2. PostgresDB installed locally and accessible from directory you are running LogAnalyzer.py from.
 
-Solution Explanation :
+### Prerequisites
+You need to do below before you actually go and run the code.
+
+    1. Install Python 3 or higher - (https://www.python.org/downloads/)
+    2. Install PostgresDB - (https://www.postgresql.org/download/windows/)
+    3. Run newsdata.sql file.
+    4. Create all views mentioned in VIEWS Section
+
+    #### VIEWS
+    1. pathCountForSuccess
+       This view is nothing but a grouped aggregation of succesful responses for each URL path.
+
+       To create it, run below command
+
+    CREATE VIEW pathCountForSuccess as
+        select path, count(*) as views
+        from log
+        where status like '20%'
+        group by path order by views desc
+
+## Running The Code
+
+Once ready, simply run the LogAnalyzer.py script and you are good to go.
+
+### Solution Explanation
 
     1. Most Popular 3 Articles
         pathCountForSuccess view gives us the most visited URL

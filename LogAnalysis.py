@@ -1,11 +1,6 @@
-import psycopg2
+#!/usr/bin/env python3
 
-viewForAllSuccessReq = \
-    "CREATE OR REPLACE VIEW pathCountForSuccess as " \
-    "select path, count(*) as views " \
-    "from log " \
-    "where status like '20%' " \
-    "group by path order by views desc"
+import psycopg2
 
 getTop3Articles = \
     "select title, pathCountForSuccess.views " \
@@ -50,7 +45,13 @@ getMostErrorneousDays = \
 
 
 def getDBConnectionCursor():
-    return psycopg2.connect(database="news")
+    try:
+        return psycopg2.connect(database="news")
+    except psycopg2.Error as e:
+        print("ERROR: Failed to connect to DB \"news\". Make sure this DB exists")
+        print(e.pgerror)
+        print(e.diag.message_detail)
+        sys.exit(1)
 
 
 def closeDBConnection(conn):
@@ -95,9 +96,6 @@ if __name__ == '__main__':
     print("\nStarting to Print the Report : \n\n")
     conn = getDBConnectionCursor()
     myCursor = conn.cursor()
-
-    # Create view which captures all URL paths which return sucess response
-    myCursor.execute(viewForAllSuccessReq)
 
     printArticles(myCursor)
     print("\n\n")
